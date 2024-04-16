@@ -7,6 +7,6 @@
 
   programs.nix-index.enable = false;
   home.shellAliases = {
-    docker = "podman";
+#    docker = "podman";
   };
 }

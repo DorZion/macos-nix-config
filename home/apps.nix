@@ -10,9 +10,17 @@
     gh
     bat
     fx
+    fd
+    jq
+    docker
+    goose
+    postgresql_16
+    micromamba
+    act
+    nvim-pkg
   ];
   
-  programs.rtx.enable = true;
+  programs.mise.enable = true;
 
   programs.wezterm = {
     enable = true;

@@ -35,6 +35,9 @@ shift + alt - s : yabai -m window --resize top:0:20
 # toggle window split type
 alt - e : yabai -m window --toggle split
 
+# close window
+alt - w : yabai -m window --close
+
 # balance out tree of windows (resize to occupy same area)
 shift + alt - e : yabai -m space --balance
 

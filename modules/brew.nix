@@ -6,10 +6,10 @@
       brewfile = true;
     };
     taps = [
-      "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/services"
       "homebrew/cask-versions"
+      "koekeishiya/formulae"
     ];
 
     brews = [
@@ -17,23 +17,21 @@
       "protobuf"
       "podman"
       "koekeishiya/formulae/yabai"
+      "koekeishiya/formulae/skhd"
     ];
     
     casks = [
       "wezterm-nightly"
       "insomnia"
-      "intellij-idea-ce"
+      #"intellij-idea-ce"
       "visual-studio-code"
       "chromium"
       "slack"
       "telegram"
-      "slite"
-      "dbeaver-community"
+      "notion"
       "barrier"
-      "mongodb-compass"
-      "aws-vpn-client"
+      #"mongodb-compass"
       "rectangle"
-      "orion"
       "sublime-text"
       "zoom"
       "min"

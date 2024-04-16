@@ -28,7 +28,7 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [jetbrains-mono];
+    fonts = with pkgs; [ jetbrains-mono sudo-font ];
   };
 
   # Add ability to used TouchID for sudo authentication
