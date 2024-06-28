@@ -24,17 +24,20 @@
         };
       } 
       {
-        name = "tide";
+        name = "pure";
         src = pkgs.fetchFromGitHub {
-          owner = "IlanCosman";
-          repo = "tide";
-          rev = "96635fbfd3448ca2a7bead773537e91e86913614";
-          hash = "sha256-WA+4JOcbQncy52iSe7Tp4KeFbrQKV+5nFJYRoQbfsvs=";
+          owner = "pure-fish";
+          repo = "pure";
+          rev = "28447d2e7a4edf3c954003eda929cde31d3621d2";
+          hash = "sha256-8zxqPU9N5XGbKc0b3bZYkQ3yH64qcbakMsHIpHZSne4=";
         };
-      }
+      } 
     ];
     shellInit = ''
       fish_add_path /opt/homebrew/bin
+      fish_add_path ~/.local/bin
+
+      source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
 
       set -g fish_color_autosuggestion '555'  'brblack'
       set -g fish_color_cancel -r
@@ -58,6 +61,9 @@
       set -g fish_color_user brgreen
       set -g fish_color_valid_path --underline
     '';
+    shellAliases = {
+     vim = "nvim";
+   };
   };
   programs.starship = {
     enable = false;

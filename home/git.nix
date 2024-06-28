@@ -1,10 +1,12 @@
-{ pkgs, ... }: {
+{ ... }: {
   programs.git = {
     enable = true;
     userEmail = "DorZion@users.noreply.github.com";
     userName = "Dor Zion";
     extraConfig = {
       pull.rebase = true;
+      core.ignorecase = false;
+      core.editor = "nvim";
     };
     signing = {
       key = null;

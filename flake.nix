@@ -28,7 +28,6 @@
     };
     nix-nvim = {
       url = "github:DorZion/nix.nvim";
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

@@ -25,8 +25,8 @@ yabai -m config window_gap 12
 # yabai -m config window_border on
 
 # Focus
-yabai -m config mouse_follows_focus off
-#yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier fn
@@ -38,5 +38,5 @@ yabai -m config mouse_action2 resize
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^Moonlight$" manage=off
 
-borders active_color=0xff03b5fc inactive_color=0xff494d64 width=6.0 &

@@ -28,7 +28,7 @@
       "chromium"
       "slack"
       "telegram"
-      "notion"
+      #"notion"
       "barrier"
       #"mongodb-compass"
       "rectangle"

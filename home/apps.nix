@@ -18,9 +18,11 @@
     micromamba
     act
     nvim-pkg
+    asdf-vm
+    tmux
   ];
   
-  programs.mise.enable = true;
+  programs.mise.enable = false;
 
   programs.wezterm = {
     enable = true;
@@ -42,7 +44,7 @@
         audible_bell = "Disabled",
         automatically_reload_config = true,
         window_decorations = "RESIZE",
-        color_scheme = "Elementary",
+        color_scheme = "Rosé Pine (Gogh)",
         force_reverse_video_cursor = true,
 	default_prog = { '/etc/profiles/per-user/dor/bin/fish' },
       }
