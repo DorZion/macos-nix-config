@@ -12,6 +12,7 @@
     fx
     fd
     jq
+    fzf
     docker
     goose
     postgresql_16
@@ -20,6 +21,8 @@
     nvim-pkg
     asdf-vm
     tmux
+    doggo
+    ipcalc
   ];
   
   programs.mise.enable = false;
