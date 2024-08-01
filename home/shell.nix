@@ -19,8 +19,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "jhillyerd";
           repo = "plugin-git";
-          rev = "641b8722948bde5863cc3a049c2fde394158122d";
-          hash = "sha256-pZY9gslSXbBhgrSCUAc+2jLSS674Db8jEH2iz/O2nVU=";
+          rev = "6336017c16c02b1e9e708dd4eb233e66a18b62fe";
+          hash = "sha256-DQLRat7uGoK57g/1x9Y514gtjvDdf9j4Iqnwif8QWVU=";
         };
       } 
       {
@@ -47,6 +47,7 @@
       fish_add_path ~/.local/bin
 
       source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
+      ${pkgs.direnv}/bin/direnv hook fish | source
 
       set -g fish_color_autosuggestion '555'  'brblack'
       set -g fish_color_cancel -r

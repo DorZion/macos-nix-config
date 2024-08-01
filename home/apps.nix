@@ -23,6 +23,7 @@
     tmux
     doggo
     ipcalc
+    direnv
   ];
   
   programs.mise.enable = false;
@@ -33,14 +34,14 @@
       local wezterm = require 'wezterm';
   
       return {
-        font = wezterm.font("Sudo"),
+        font = wezterm.font("Rec Mono Linear"),--wezterm.font("Sudo"),
         -- font_rules = {
         --   {
         --     intensity = "Bold",
         --     font = wezterm.font("JetBrains Mono", { weight = "Bold" })
         --   }
         -- },
-        font_size = 16,
+        font_size = 12,
         harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
         --freetype_load_target = "Light",
         --freetype_render_target = "HorizontalLcd",
@@ -49,7 +50,7 @@
         window_decorations = "RESIZE",
         color_scheme = "Rosé Pine (Gogh)",
         force_reverse_video_cursor = true,
-	default_prog = { '/etc/profiles/per-user/dor/bin/fish' },
+        default_prog = { '/etc/profiles/per-user/dor/bin/fish' },
       }
     '';
   };

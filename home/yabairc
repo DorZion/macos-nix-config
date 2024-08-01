@@ -39,4 +39,5 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Moonlight$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
 
