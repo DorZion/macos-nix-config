@@ -1,7 +1,7 @@
 { ... }: {
   programs.vim = {
-    enable = true;
-    defaultEditor = true;
+    enable = false;
+    defaultEditor = false;
     #vimAlias = true;
   };
 

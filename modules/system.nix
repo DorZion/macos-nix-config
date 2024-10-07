@@ -24,6 +24,7 @@
       # other macOS's defaults configuration.
       # ......
     #};
+    stateVersion = 4;
   };
 
   fonts = {

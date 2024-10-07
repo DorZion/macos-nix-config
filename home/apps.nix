@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    wget
     ripgrep
     httpie
     aws-vault
@@ -24,6 +25,7 @@
     doggo
     ipcalc
     direnv
+    git-absorb
   ];
   
   programs.mise.enable = false;
@@ -34,23 +36,27 @@
       local wezterm = require 'wezterm';
   
       return {
-        font = wezterm.font("Rec Mono Linear"),--wezterm.font("Sudo"),
-        -- font_rules = {
-        --   {
-        --     intensity = "Bold",
-        --     font = wezterm.font("JetBrains Mono", { weight = "Bold" })
-        --   }
-        -- },
+        font = wezterm.font_with_fallback {
+          "Monaspace Krypton", 
+          "Monaspace Neon", 
+          "Rec Mono Linear", 
+          "Sudo",
+        },
         font_size = 12,
         harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-        --freetype_load_target = "Light",
-        --freetype_render_target = "HorizontalLcd",
         audible_bell = "Disabled",
         automatically_reload_config = true,
         window_decorations = "RESIZE",
-        color_scheme = "Rosé Pine (Gogh)",
+        color_scheme = "Catppuccin Mocha (Gogh)",
         force_reverse_video_cursor = true,
         default_prog = { '/etc/profiles/per-user/dor/bin/fish' },
+
+        unix_domains = {
+          {
+            name = 'unix',
+          },
+        },
+        default_gui_startup_args = { 'connect', 'unix' }
       }
     '';
   };

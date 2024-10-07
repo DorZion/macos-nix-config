@@ -17,13 +17,6 @@ yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 12
 
-# Border
-# yabai -m config active_window_border_color 0xff008aff
-# yabai -m config normal_window_border_color 0xff424242
-# yabai -m config window_border_width 3
-# yabai -m config window_border_radius 12
-# yabai -m config window_border on
-
 # Focus
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autoraise
@@ -40,4 +33,6 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Moonlight$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^BetterDisplay$" manage=off
+yabai -m rule --add app="^Tailscale$" manage=off
 
