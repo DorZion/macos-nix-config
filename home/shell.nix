@@ -51,8 +51,6 @@
       source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
       ${pkgs.direnv}/bin/direnv hook fish | source
 
-      set -x EDITOR vim
-
       set -g fish_color_autosuggestion '555'  'brblack'
       set -g fish_color_cancel -r
       set -g fish_color_command --bold

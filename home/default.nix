@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # import sub modules
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
     ./shell.nix
     ./apps.nix
     ./core.nix

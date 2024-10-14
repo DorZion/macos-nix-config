@@ -19,7 +19,6 @@
     postgresql_16
     micromamba
     act
-    nvim-pkg
     asdf-vm
     tmux
     doggo

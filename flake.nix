@@ -26,8 +26,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-nvim = {
-      url = "github:DorZion/nix.nvim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -36,9 +37,9 @@
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names. 
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = { self, nixpkgs, darwin, home-manager, nix-nvim, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
   let
-      overlays = import ./overlays { inherit inputs; };
+      overlays = {}; # import ./overlays { inherit inputs; };
   in {
     darwinConfigurations.MBP = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -53,7 +54,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = inputs;
+          home-manager.extraSpecialArgs = {inherit inputs;};
 
           home-manager.users.dor = import ./home;
         } 
