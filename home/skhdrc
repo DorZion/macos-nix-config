@@ -6,6 +6,10 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
+# change display focus
+shift + alt + cmd - h : yabai -m display --focus west 
+shift + alt + cmd - l : yabai -m display --focus east
+
 # swap windows
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north

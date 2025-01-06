@@ -3,6 +3,8 @@
   # import sub modules
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.nix-index-database.hmModules.nix-index
+    inputs.catppuccin.homeManagerModules.catppuccin
     ./shell.nix
     ./apps.nix
     ./core.nix

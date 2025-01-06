@@ -17,9 +17,16 @@ yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 12
 
+# Border
+# yabai -m config active_window_border_color 0xff008aff
+# yabai -m config normal_window_border_color 0xff424242
+# yabai -m config window_border_width 3
+# yabai -m config window_border_radius 12
+# yabai -m config window_border on
+
 # Focus
-yabai -m config mouse_follows_focus on
-yabai -m config focus_follows_mouse autoraise
+#yabai -m config mouse_follows_focus on
+#yabai -m config focus_follows_mouse autoraise
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier fn
@@ -35,4 +42,11 @@ yabai -m rule --add app="^Moonlight$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^BetterDisplay$" manage=off
 yabai -m rule --add app="^Tailscale$" manage=off
+yabai -m rule --add title="AU.*EQ" manage=off
+#yabai -m rule --add role="kAXDialogSubrole" manage=off
+#yabai -m rule --add role="kAXSystemDialogSubrole" manage=off
+#yabai -m rule --add role="kAXFloatingWindowSubrole" manage=off
+#yabai -m rule --add role="kAXSystemFloatingWindowSubrole" manage=off
 
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'

@@ -16,6 +16,7 @@
       "awscli"
       "protobuf"
       "podman"
+      "deskpad"
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
     ];
@@ -23,18 +24,13 @@
     casks = [
       "wezterm-nightly"
       "insomnia"
-      #"intellij-idea-ce"
       "visual-studio-code"
-      "chromium"
       "slack"
       "telegram"
-      #"notion"
-      "barrier"
-      #"mongodb-compass"
-      "rectangle"
       "sublime-text"
       "zoom"
-      "min"
+      "maccy"
+      "nikitabobko/tap/aerospace"
     ];
   };
 }

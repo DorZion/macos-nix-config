@@ -1,19 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+let catppuccin-fish = pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "fish";
+          rev = "cc8e4d8fffbdaab07b3979131030b234596f18da";
+          hash = "sha256-udiU2TOh0lYL7K7ylbt+BGlSDgCjMpy75vQ98C1kFcc=";
+        };
+in {
+  #home.file.".config/fish/themes/Catppuccin Mocha.theme".source = "${catppuccin-fish}/themes/Catppuccin Mocha.theme";
   home.sessionVariables = {
     SHELL = "${pkgs.fish}/bin/fish";
   };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   programs.fish = {
     enable = true;
     plugins = [
-      {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "ddeb28a7b6a1f0ec6dae40c636e5ca4908ad160a";
-          sha256 = "0c5i7sdrsp0q3vbziqzdyqn4fmp235ax4mn4zslrswvn8g3fvdyh";
-        };
-      }
       {
         name = "plugin-git";
         src = pkgs.fetchFromGitHub {
@@ -23,15 +28,6 @@
           hash = "sha256-DQLRat7uGoK57g/1x9Y514gtjvDdf9j4Iqnwif8QWVU=";
         };
       } 
-     # {
-     #   name = "pure";
-     #   src = pkgs.fetchFromGitHub {
-     #     owner = "pure-fish";
-     #     repo = "pure";
-     #     rev = "28447d2e7a4edf3c954003eda929cde31d3621d2";
-     #     hash = "sha256-8zxqPU9N5XGbKc0b3bZYkQ3yH64qcbakMsHIpHZSne4=";
-     #   };
-     # } 
       {
         name = "fzf.fish";
         src = pkgs.fetchFromGitHub {
@@ -51,27 +47,35 @@
       source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
       ${pkgs.direnv}/bin/direnv hook fish | source
 
-      set -g fish_color_autosuggestion '555'  'brblack'
-      set -g fish_color_cancel -r
-      set -g fish_color_command --bold
-      set -g fish_color_comment red
-      set -g fish_color_cwd green
-      set -g fish_color_cwd_root red
-      set -g fish_color_end brmagenta
-      set -g fish_color_error brred
-      set -g fish_color_escape 'bryellow'  '--bold'
-      set -g fish_color_history_current --bold
-      set -g fish_color_host normal
-      set -g fish_color_match --background=brblue
-      set -g fish_color_normal normal
-      set -g fish_color_operator bryellow
-      set -g fish_color_param cyan
-      set -g fish_color_quote yellow
-      set -g fish_color_redirection brblue
-      set -g fish_color_search_match 'bryellow'  '--background=brblack'
-      set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
-      set -g fish_color_user brgreen
-      set -g fish_color_valid_path --underline
+      if test -d (brew --prefix)"/share/fish/completions"
+          set -p fish_complete_path (brew --prefix)/share/fish/completions
+      end
+      
+      if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+          set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+      end
+
+      # set -g fish_color_autosuggestion '555'  'brblack'
+      # set -g fish_color_cancel -r
+      # set -g fish_color_command --bold
+      # set -g fish_color_comment red
+      # set -g fish_color_cwd green
+      # set -g fish_color_cwd_root red
+      # set -g fish_color_end brmagenta
+      # set -g fish_color_error brred
+      # set -g fish_color_escape 'bryellow'  '--bold'
+      # set -g fish_color_history_current --bold
+      # set -g fish_color_host normal
+      # set -g fish_color_match --background=brblue
+      # set -g fish_color_normal normal
+      # set -g fish_color_operator bryellow
+      # set -g fish_color_param cyan
+      # set -g fish_color_quote yellow
+      # set -g fish_color_redirection brblue
+      # set -g fish_color_search_match 'bryellow'  '--background=brblack'
+      # set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
+      # set -g fish_color_user brgreen
+      # set -g fish_color_valid_path --underline
     '';
     shellAliases = {
      vim = "nvim";
