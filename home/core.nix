@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.vim = {
     enable = false;
     defaultEditor = false;
@@ -6,7 +6,7 @@
   };
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
@@ -23,10 +23,10 @@
       showmatch = true;
       incsearch = true;
       hlsearch = true;
-      
+
       spell = true;
       spelllang = "en";
-      
+
       expandtab = true;
       tabstop = 2;
       softtabstop = 2;
@@ -77,6 +77,6 @@
 
   programs.nix-index.enable = false;
   home.shellAliases = {
-#    docker = "podman";
+    #    docker = "podman";
   };
 }

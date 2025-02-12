@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # networking.hostName = hostname;
   # networking.computerName = hostname;
   # system.defaults.smb.NetBIOSName = hostname;
@@ -9,5 +8,5 @@
     home = "/Users/dor";
   };
 
-  nix.settings.trusted-users = [ "dor" ];
+  nix.settings.trusted-users = ["dor"];
 }

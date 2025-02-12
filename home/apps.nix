@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     wget
     ripgrep
@@ -29,7 +29,7 @@
     git-absorb
     mergiraf
   ];
-  
+
   programs.zoxide.enable = true;
 
   programs.bat.enable = true;
@@ -44,13 +44,13 @@
     enable = true;
     extraConfig = ''
       local wezterm = require 'wezterm';
-  
+
       return {
         font = wezterm.font_with_fallback {
           "CommitMono",
-          "Monaspace Krypton", 
-          "Monaspace Neon", 
-          "Rec Mono Linear", 
+          "Monaspace Krypton",
+          "Monaspace Neon",
+          "Rec Mono Linear",
           "Sudo",
         },
         font_size = 12,

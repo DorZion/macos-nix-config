@@ -1,10 +1,10 @@
-{ pkgs, ... }: 
-let catppuccin-fish = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "fish";
-          rev = "cc8e4d8fffbdaab07b3979131030b234596f18da";
-          hash = "sha256-udiU2TOh0lYL7K7ylbt+BGlSDgCjMpy75vQ98C1kFcc=";
-        };
+{pkgs, ...}: let
+  catppuccin-fish = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "fish";
+    rev = "cc8e4d8fffbdaab07b3979131030b234596f18da";
+    hash = "sha256-udiU2TOh0lYL7K7ylbt+BGlSDgCjMpy75vQ98C1kFcc=";
+  };
 in {
   #home.file.".config/fish/themes/Catppuccin Mocha.theme".source = "${catppuccin-fish}/themes/Catppuccin Mocha.theme";
   home.sessionVariables = {
@@ -27,7 +27,7 @@ in {
           rev = "6336017c16c02b1e9e708dd4eb233e66a18b62fe";
           hash = "sha256-DQLRat7uGoK57g/1x9Y514gtjvDdf9j4Iqnwif8QWVU=";
         };
-      } 
+      }
       {
         name = "fzf.fish";
         src = pkgs.fetchFromGitHub {
@@ -36,7 +36,7 @@ in {
           rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
           hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
-      } 
+      }
     ];
     shellInit = ''
       set fish_greeting
@@ -50,7 +50,7 @@ in {
       if test -d (brew --prefix)"/share/fish/completions"
           set -p fish_complete_path (brew --prefix)/share/fish/completions
       end
-      
+
       if test -d (brew --prefix)"/share/fish/vendor_completions.d"
           set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
@@ -78,8 +78,8 @@ in {
       # set -g fish_color_valid_path --underline
     '';
     shellAliases = {
-     vim = "nvim";
-   };
+      vim = "nvim";
+    };
   };
   programs.starship = {
     enable = true;

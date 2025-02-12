@@ -3,11 +3,12 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
 
     extra-substituters = [
       # Nix community's cache server
       "https://nix-community.cachix.org"
+      "https://nvf.cachix.org/"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -38,16 +39,26 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  # The `outputs` function will return all the build results of the flake. 
+  # The `outputs` function will return all the build results of the flake.
   # A flake can have many use cases and different types of outputs,
-  # parameters in `outputs` are defined in `inputs` and can be referenced by their names. 
+  # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = { self, nixpkgs, darwin, home-manager, nix-index-database, ... }@inputs:
-  let
-      overlays = {}; # import ./overlays { inherit inputs; };
+  outputs = {
+    self,
+    nixpkgs,
+    darwin,
+    home-manager,
+    nix-index-database,
+    ...
+  } @ inputs: let
+    overlays = {}; # import ./overlays { inherit inputs; };
   in {
     darwinConfigurations.MBP = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -56,17 +67,21 @@
         ./modules/system.nix
         ./modules/brew.nix
         ./modules/users.nix
-        (overlays)
-        
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "bak";
+        overlays
 
-          home-manager.extraSpecialArgs = {inherit inputs;};
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-          home-manager.users.dor = import ./home;
-        } 
+            backupFileExtension = "bak";
+
+            extraSpecialArgs = {inherit inputs;};
+
+            users.dor = import ./home;
+          };
+        }
       ];
     };
   };

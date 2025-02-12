@@ -1,15 +1,13 @@
-{ pkgs, ... }:
-
-  ###################################################################################
-  #
-  #  macOS's System configuration
-  #
-  #  All the configuration options are documented here:
-  #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-  #
-  ###################################################################################
+{pkgs, ...}:
+###################################################################################
+#
+#  macOS's System configuration
+#
+#  All the configuration options are documented here:
+#    https://daiderd.com/nix-darwin/manual/index.html#sec-options
+#
+###################################################################################
 {
-
   system = {
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
@@ -19,16 +17,16 @@
     '';
 
     #defaults = {
-     # menuExtraClock.Show24Hour = true;  # show 24 hour clock
+    # menuExtraClock.Show24Hour = true;  # show 24 hour clock
 
-      # other macOS's defaults configuration.
-      # ......
+    # other macOS's defaults configuration.
+    # ......
     #};
     stateVersion = 4;
   };
 
   fonts = {
-    packages = with pkgs; [ jetbrains-mono sudo-font ];
+    packages = with pkgs; [jetbrains-mono sudo-font];
   };
 
   # Add ability to used TouchID for sudo authentication
