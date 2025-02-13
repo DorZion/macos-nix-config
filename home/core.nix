@@ -6,7 +6,7 @@
   };
 
   programs.nixvim = {
-    enable = false;
+    enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
@@ -70,8 +70,14 @@
     ];
 
     colorschemes.catppuccin = {
-      enable = true;
+      enable = false;
       settings.flavour = "mocha";
+    };
+    colorschemes.gruvbox = {
+      enable = true;
+      settings = {
+        contrast = "hard";
+      };
     };
   };
 

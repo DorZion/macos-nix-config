@@ -16,12 +16,9 @@
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
 
-    #defaults = {
-    # menuExtraClock.Show24Hour = true;  # show 24 hour clock
-
-    # other macOS's defaults configuration.
-    # ......
-    #};
+    defaults = {
+      menuExtraClock.Show24Hour = true; # show 24 hour clock
+    };
     stateVersion = 4;
   };
 

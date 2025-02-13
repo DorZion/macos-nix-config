@@ -1,6 +1,6 @@
 {
   programs.nvf = {
-    enable = true;
+    enable = false;
     settings = {
       vim = {
         viAlias = true;
@@ -109,14 +109,14 @@
         statusline = {
           lualine = {
             enable = true;
-            theme = "catppuccin";
+            theme = "gruvbox";
           };
         };
 
         theme = {
           enable = true;
-          name = "catppuccin";
-          style = "mocha";
+          name = "gruvbox";
+          style = "dark";
           transparent = false;
         };
 

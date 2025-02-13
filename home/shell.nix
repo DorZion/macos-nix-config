@@ -1,18 +1,10 @@
-{pkgs, ...}: let
-  catppuccin-fish = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "fish";
-    rev = "cc8e4d8fffbdaab07b3979131030b234596f18da";
-    hash = "sha256-udiU2TOh0lYL7K7ylbt+BGlSDgCjMpy75vQ98C1kFcc=";
-  };
-in {
-  #home.file.".config/fish/themes/Catppuccin Mocha.theme".source = "${catppuccin-fish}/themes/Catppuccin Mocha.theme";
+{pkgs, ...}: {
   home.sessionVariables = {
     SHELL = "${pkgs.fish}/bin/fish";
   };
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "mocha";
   };
 
@@ -36,6 +28,10 @@ in {
           rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
           hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
         };
+      }
+      {
+        name = "gruvbox";
+        src = pkgs.fishPlugins.gruvbox;
       }
     ];
     shellInit = ''
@@ -94,7 +90,7 @@ in {
       };
 
       # Catppuccin_mocha
-      palette = "catppuccin_mocha";
+      #palette = "catppuccin_mocha";
 
       git_branch = {
         style = "bold mauve";
@@ -102,7 +98,7 @@ in {
 
       directory = {
         #truncation_length = 4;
-        style = "bold lavender";
+        #style = "bold lavender";
         fish_style_pwd_dir_length = 1;
       };
 

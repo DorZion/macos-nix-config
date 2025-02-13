@@ -59,7 +59,8 @@
         audible_bell = "Disabled",
         automatically_reload_config = true,
         window_decorations = "RESIZE",
-        color_scheme = "Catppuccin Mocha (Gogh)",
+        --color_scheme = "Catppuccin Mocha (Gogh)",
+        color_scheme = "GruvboxDarkHard",
         force_reverse_video_cursor = true,
         visual_bell = {
           fade_in_function = 'EaseIn',
