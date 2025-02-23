@@ -13,12 +13,7 @@
     plugins = [
       {
         name = "plugin-git";
-        src = pkgs.fetchFromGitHub {
-          owner = "jhillyerd";
-          repo = "plugin-git";
-          rev = "6336017c16c02b1e9e708dd4eb233e66a18b62fe";
-          hash = "sha256-DQLRat7uGoK57g/1x9Y514gtjvDdf9j4Iqnwif8QWVU=";
-        };
+        src = pkgs.fishPlugins.plugin-git.src;
       }
       {
         name = "fzf.fish";
@@ -31,11 +26,13 @@
       }
       {
         name = "gruvbox";
-        src = pkgs.fishPlugins.gruvbox;
+        src = pkgs.fishPlugins.gruvbox.src;
       }
     ];
     shellInit = ''
       set fish_greeting
+
+      theme_gruvbox dark hard
 
       fish_add_path /opt/homebrew/bin
       fish_add_path ~/.local/bin

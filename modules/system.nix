@@ -18,12 +18,20 @@
 
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
+      CustomUserPreferences = {
+        #NSStatusItemSpacing = 6;
+
+        kCFPreferencesAnyApplication = {
+          TSMLanguageIndicatorEnabled = 0;
+        };
+
+      };
     };
     stateVersion = 4;
   };
 
   fonts = {
-    packages = with pkgs; [jetbrains-mono sudo-font];
+    packages = with pkgs; [jetbrains-mono sudo-font commit-mono];
   };
 
   # Add ability to used TouchID for sudo authentication
