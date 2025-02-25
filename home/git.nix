@@ -18,6 +18,7 @@
       enable = true;
       options = {
         line-numbers = true;
+        theme = "gruvbox-dark";
       };
     };
     lfs.enable = true;
