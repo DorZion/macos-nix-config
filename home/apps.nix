@@ -87,7 +87,7 @@
   };
 
   home.file.".config/ghostty/config".text = ''
-    theme = "catppuccin-mocha"
+    theme = "GruvboxDarkHard"
 
     font-family = "CommitMono"
     font-feature = "ss03"
