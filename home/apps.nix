@@ -28,6 +28,7 @@
     nss.tools
     git-absorb
     mergiraf
+    presenterm
   ];
 
   programs.zoxide.enable = true;
