@@ -27,7 +27,7 @@
 
       };
     };
-    stateVersion = 4;
+    stateVersion = 5;
   };
 
   fonts = {

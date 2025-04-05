@@ -6,9 +6,7 @@
       brewfile = true;
     };
     taps = [
-      "homebrew/cask-fonts"
       "homebrew/services"
-      "homebrew/cask-versions"
       "koekeishiya/formulae"
     ];
 
@@ -22,13 +20,11 @@
     ];
 
     casks = [
-      "wezterm-nightly"
-      "insomnia"
+      "wezterm@nightly"
       "visual-studio-code"
       #"slack"
       #"telegram"
       "sublime-text"
-      "zoom"
       "maccy"
       "nikitabobko/tap/aerospace"
     ];
