@@ -6,7 +6,6 @@
       brewfile = true;
     };
     taps = [
-      "homebrew/services"
       "koekeishiya/formulae"
     ];
 
