@@ -7,7 +7,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.nix-index-database.hmModules.nix-index
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
     inputs.nvf.homeManagerModules.default
     ./shell.nix
     ./apps.nix
