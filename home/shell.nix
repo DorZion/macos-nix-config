@@ -28,9 +28,14 @@
         name = "gruvbox";
         src = pkgs.fishPlugins.gruvbox.src;
       }
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
     ];
     shellInit = ''
       set fish_greeting
+      set fish_cursor_default block
 
       theme_gruvbox dark hard
 

@@ -26,9 +26,10 @@
     git-absorb
     mkcert
     nss.tools
-    git-absorb
     mergiraf
     presenterm
+    lunarvim
+    git-who
   ];
 
   programs.zoxide.enable = true;
@@ -50,6 +51,11 @@
     enable = true;
     extraConfig = ''
       local wezterm = require 'wezterm';
+      local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez");
+
+      --tabline.setup({
+      --  theme = 'GruvboxDark',
+      --})
 
       return {
         font = wezterm.font_with_fallback {
@@ -84,6 +90,48 @@
         },
         default_gui_startup_args = { 'connect', 'unix' }
       }
+    '';
+  };
+
+  programs.kitty = {
+    enable = true;
+    enableGitIntegration = true;
+    shellIntegration.mode = "no-cursor";
+    darwinLaunchOptions = [
+      "--listen-on=unix:/tmp/kitty-socket"
+    ];
+    font = {
+      name = "CommitMono";
+    };
+    themeFile = "gruvbox-dark-hard";
+
+    settings = {
+      font_size = 12.0;
+      cursor = "none";
+      cursor_shape = "block";
+      cursor_blink_interval = 0;
+      enable_audio_bell = false;
+      tab_bar_edge = "top";
+      tab_bar_style = "slant";
+      visual_bell_duration = 0.2;
+      hide_window_decorations = "titlebar-only";
+      window_padding_width = 2;
+      update_check_interval = 0;
+
+      tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}: {title}";
+    };
+
+    extraConfig = ''
+      map cmd+1 goto_tab 1
+      map cmd+2 goto_tab 2
+      map cmd+3 goto_tab 3
+      map cmd+4 goto_tab 4
+      map cmd+5 goto_tab 5 
+      map cmd+6 goto_tab 6
+      map cmd+7 goto_tab 7
+      map cmd+8 goto_tab 8
+      map cmd+9 goto_tab 9
+      map cmd+0 goto_tab 10
     '';
   };
 
