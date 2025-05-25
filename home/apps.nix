@@ -103,22 +103,28 @@
     font = {
       name = "CommitMono";
     };
-    themeFile = "gruvbox-dark-hard";
+    themeFile = "ayu";
 
     settings = {
       font_size = 12.0;
       cursor = "none";
       cursor_shape = "block";
       cursor_blink_interval = 0;
+
+      selection_foreground = "none";
+      selection_background = "none";
+
       enable_audio_bell = false;
+      visual_bell_duration = 0.2;
+
       tab_bar_edge = "top";
       tab_bar_style = "slant";
-      visual_bell_duration = 0.2;
+      tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}: {title}";
+
       hide_window_decorations = "titlebar-only";
       window_padding_width = 2;
-      update_check_interval = 0;
 
-      tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}: {title}";
+      update_check_interval = 0;
     };
 
     extraConfig = ''

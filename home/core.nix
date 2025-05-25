@@ -74,10 +74,13 @@
       settings.flavour = "mocha";
     };
     colorschemes.gruvbox = {
-      enable = true;
+      enable = false;
       settings = {
         contrast = "hard";
       };
+    };
+    colorschemes.ayu = {
+      enable = true;
     };
   };
 
