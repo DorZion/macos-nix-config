@@ -16,6 +16,8 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+automatically-unhide-macos-hidden-apps = true
+
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
 #alt-enter = '''exec-and-forget osascript -e '
@@ -110,9 +112,7 @@ outer.right =      4
   run = 'layout floating'
 
 [[on-window-detected]]
-  if.app-id="com.mitchellh.ghostty"
-  run=[
-    "layout floating",
-    "layout tiling",
-  ]
-
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout tiling",
+]

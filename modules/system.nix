@@ -25,7 +25,7 @@
   };
 
   fonts = {
-    packages = with pkgs; [jetbrains-mono sudo-font commit-mono];
+    packages = with pkgs; [jetbrains-mono sudo-font commit-mono hack-font];
   };
 
   # Add ability to used TouchID for sudo authentication

@@ -12,7 +12,6 @@
     fx
     fd
     jq
-    fzf
     docker
     goose
     postgresql_16
@@ -30,9 +29,13 @@
     presenterm
     lunarvim
     git-who
+    jujutsu
+    yt-dlp
   ];
 
   programs.zoxide.enable = true;
+
+  programs.fzf.enable = true;
 
   programs.bat = {
     enable = true;

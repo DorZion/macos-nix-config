@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  home.shell.enableFishIntegration = true;
+
   home.sessionVariables = {
     SHELL = "${pkgs.fish}/bin/fish";
   };
@@ -7,6 +9,8 @@
     enable = false;
     flavor = "mocha";
   };
+
+  programs.atuin.enable = false;
 
   programs.fish = {
     enable = true;
