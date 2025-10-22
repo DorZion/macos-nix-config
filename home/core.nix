@@ -80,6 +80,9 @@
       };
     };
     colorschemes.ayu = {
+      enable = false;
+    };
+    colorschemes.monokai-pro = {
       enable = true;
     };
   };

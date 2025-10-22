@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   home.packages = with pkgs; [
     wget
     ripgrep
@@ -17,11 +17,9 @@
     postgresql_16
     micromamba
     act
-    asdf-vm
     tmux
     doggo
     ipcalc
-    direnv
     git-absorb
     mkcert
     nss.tools
@@ -31,16 +29,28 @@
     git-who
     jujutsu
     yt-dlp
+    clang-tools
+    fq
+    #somo
+    gitu
+    golangci-lint
   ];
+
+  programs.direnv.enable = true;
+
+  programs.mise.enable = true;
 
   programs.zoxide.enable = true;
 
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = false;
+  };
 
   programs.bat = {
     enable = true;
     config = {
-      theme = "gruvbox-dark";
+      theme = "Monokai Extended";
     };
   };
 
@@ -98,7 +108,7 @@
 
   programs.kitty = {
     enable = true;
-    enableGitIntegration = true;
+    enableGitIntegration = false;
     shellIntegration.mode = "no-cursor";
     darwinLaunchOptions = [
       "--listen-on=unix:/tmp/kitty-socket"
@@ -106,7 +116,7 @@
     font = {
       name = "CommitMono";
     };
-    themeFile = "ayu";
+    themeFile = "Monokai";
 
     settings = {
       font_size = 12.0;
@@ -141,6 +151,8 @@
       map cmd+8 goto_tab 8
       map cmd+9 goto_tab 9
       map cmd+0 goto_tab 10
+
+      font_features CommitMono-Regular +ss03 +ss04 +ss05 +cv02 +cv04 +cv08
     '';
   };
 
@@ -162,9 +174,14 @@
 
   home.file.".config/yabai/yabairc".source = ./yabairc;
   home.file.".config/yabai/yabairc".executable = true;
+
   home.file.".config/skhd/skhdrc".source = ./skhdrc;
   home.file.".config/skhd/skhdrc".executable = true;
+
   home.file.".config/borders/bordersrc".source = ./bordersrc;
   home.file.".config/borders/bordersrc".executable = true;
+
   home.file.".config/aerospace/aerospace.toml".source = ./aerospace.toml;
+
+  home.file.".config/zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dev/macos-nix-config/home/zed_settings.json";
 }

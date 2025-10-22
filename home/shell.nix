@@ -21,12 +21,7 @@
       }
       {
         name = "fzf.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
-          hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-        };
+        src = pkgs.fishPlugins.fzf-fish.src;
       }
       {
         name = "gruvbox";
@@ -36,6 +31,14 @@
         name = "bass";
         src = pkgs.fishPlugins.bass.src;
       }
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+      # {
+      #   name = "pure";
+      #   src = pkgs.fishPlugins.pure.src;
+      # }
     ];
     shellInit = ''
       set fish_greeting
@@ -46,8 +49,8 @@
       fish_add_path /opt/homebrew/bin
       fish_add_path ~/.local/bin
 
-      source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
-      ${pkgs.direnv}/bin/direnv hook fish | source
+      #source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
+      #${pkgs.direnv}/bin/direnv hook fish | source
 
       if test -d (brew --prefix)"/share/fish/completions"
           set -p fish_complete_path (brew --prefix)/share/fish/completions
@@ -57,7 +60,9 @@
           set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
 
-      fish_config theme choose "ayu Dark"
+      #fish_config theme choose "ayu Dark"
+
+      fish_config theme choose "fish default"
 
        #set -g fish_color_autosuggestion '555'  'brblack'
        #set -g fish_color_cancel -r
@@ -87,7 +92,7 @@
     };
   };
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
       add_newline = false;
       line_break.disabled = false;

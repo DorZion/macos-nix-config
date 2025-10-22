@@ -2,9 +2,9 @@
 
 start-at-login = true
 
-after-startup-command = [
-  'exec-and-forget borders active_color=0xff03b5fc inactive_color=0xff494d64 width=4.0'
-]
+#after-startup-command = [
+#  'exec-and-forget borders active_color=0xff03b5fc inactive_color=0xff494d64 width=4.0'
+#]
 
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
@@ -15,6 +15,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = true
 
@@ -44,6 +45,10 @@ alt-shift-h = 'move left'
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
 #alt-h = 'split horizontal'
 #alt-v = 'split vertical'
+cmd-alt-comma = 'join-with up'
+cmd-alt-m = 'join-with down'
+cmd-alt-period = 'join-with right'
+cmd-alt-n = 'join-with left'
 
 alt-f = 'fullscreen'
 

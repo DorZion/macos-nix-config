@@ -19,13 +19,14 @@
     ];
 
     casks = [
-      "wezterm@nightly"
+      #"wezterm@nightly"
       "visual-studio-code"
       #"slack"
       #"telegram"
       "sublime-text"
       "maccy"
       "nikitabobko/tap/aerospace"
+      "sublime-merge"
     ];
   };
 }

@@ -5,8 +5,8 @@
 }: {
   # import sub modules
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nixvim.homeModules.nixvim
+    inputs.nix-index-database.homeModules.nix-index
     inputs.catppuccin.homeModules.catppuccin
     inputs.nvf.homeManagerModules.default
     ./shell.nix
@@ -14,6 +14,7 @@
     ./core.nix
     ./git.nix
     ./nvim.nix
+    ./pythonPkgs.nix
   ];
 
   # Home Manager needs a bit of information about you and the
