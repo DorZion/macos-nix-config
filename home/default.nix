@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   # import sub modules

@@ -7,9 +7,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "search": {
+    "include_ignored": true
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
   "confirm_quit": true,
   "base_keymap": "VSCode",
-  "disable_ai": true,
+  "disable_ai": false,
   "context_servers": {
     "atlassian": {
       "source": "custom",
@@ -22,7 +28,7 @@
     "dock": "bottom"
   },
   "restore_on_startup": "last_session",
-  "show_edit_predictions": false,
+  "show_edit_predictions": true,
   "agent": {
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
@@ -82,12 +88,14 @@
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
-  "autosave": "on_focus_change",
+  "autosave": "on_window_change",
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": false,
-    "show_background": false
+    "show_background": false,
+    "show_parameter_hints": false
   },
+  "tab_size": 2,
   "languages": {
     "Proto": {
       "formatter": [

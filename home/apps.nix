@@ -60,6 +60,15 @@
 
   programs.nix-index-database.comma.enable = true;
 
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true;
+    attachExistingSession = true;
+    exitShellOnExit = true;
+
+    settings.theme = "molokai-dark";
+  };
+
   programs.wezterm = {
     enable = true;
     extraConfig = ''
@@ -154,6 +163,82 @@
 
       font_features CommitMono-Regular +ss03 +ss04 +ss05 +cv02 +cv04 +cv08
     '';
+  };
+
+  programs.alacritty = {
+    enable = true;
+    theme = "monokai_pro";
+    settings = {
+      font = {
+        normal = {
+          family = "CommitMono";
+          style = "Regular";
+        };
+        bold = {
+          family = "CommitMono";
+        };
+        italic = {
+          family = "CommitMono";
+        };
+        size = 12.0;
+        builtin_box_drawing = true;
+      };
+
+      cursor = {
+        style = {
+          shape = "Block";
+          blinking = "Off";
+        };
+        unfocused_hollow = false;
+      };
+
+     # colors = {
+     #   primary = {
+     #     background = "#272822";
+     #     foreground = "#f8f8f2";
+     #   };
+     #   normal = {
+     #     black = "#272822";
+     #     red = "#f92672";
+     #     green = "#a6e22e";
+     #     yellow = "#f4bf75";
+     #     blue = "#66d9ef";
+     #     magenta = "#ae81ff";
+     #     cyan = "#a1efe4";
+     #     white = "#f8f8f2";
+     #   };
+     #   bright = {
+     #     black = "#75715e";
+     #     red = "#f92672";
+     #     green = "#a6e22e";
+     #     yellow = "#f4bf75";
+     #     blue = "#66d9ef";
+     #     magenta = "#ae81ff";
+     #     cyan = "#a1efe4";
+     #     white = "#f9f8f5";
+     #   };
+     # };
+
+      selection = {
+        save_to_clipboard = true;
+      };
+
+      bell = {
+        animation = "EaseOutExpo";
+        duration = 200;
+        color = "#ffffff";
+      };
+
+      window = {
+        decorations = "Buttonless";
+        padding = {
+          x = 2;
+          y = 2;
+        };
+        dynamic_padding = false;
+        opacity = 1.0;
+      };
+    };
   };
 
   home.file.".config/ghostty/config".text = ''
