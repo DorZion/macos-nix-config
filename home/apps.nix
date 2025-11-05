@@ -15,7 +15,6 @@
     docker
     goose
     postgresql_16
-    micromamba
     act
     tmux
     doggo
@@ -31,7 +30,6 @@
     yt-dlp
     clang-tools
     fq
-    #somo
     gitu
     golangci-lint
   ];
