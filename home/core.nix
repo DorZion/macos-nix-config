@@ -85,6 +85,9 @@
     colorschemes.monokai-pro = {
       enable = true;
     };
+    colorschemes.nord = {
+      enable = false;
+    };
   };
 
   programs.nix-index.enable = false;

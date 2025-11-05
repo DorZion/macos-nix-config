@@ -50,7 +50,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Monokai Extended";
+      theme = "Nord";
     };
   };
 
@@ -62,11 +62,46 @@
 
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
-    attachExistingSession = true;
-    exitShellOnExit = true;
+    enableFishIntegration = false;
+    attachExistingSession = false;
+    exitShellOnExit = false;
 
     settings.theme = "molokai-dark";
+
+    extraConfig = ''
+      show_stratup_tips false
+      show_release_notes false
+
+      layout {
+        pane
+        pane split_direction="vertical" {
+            pane command="claude"
+            pane
+        }
+      }
+      keybinds {
+        normal {
+          unbind "Alt Left"
+          unbind "Alt Right"
+          unbind "Alt Up"
+          unbind "Alt Down"
+
+          bind "Super Left" { MoveFocusOrTab "left"; }
+          bind "Super Right" { MoveFocusOrTab "right"; }
+          bind "Super Up" { MoveFocus "up"; }
+          bind "Super Down" { MoveFocus "down"; }
+          bind "Super 1" { GoToTab 1; }
+          bind "Super 2" { GoToTab 2; }
+          bind "Super 3" { GoToTab 3; }
+          bind "Super 4" { GoToTab 4; }
+          bind "Super 5" { GoToTab 5; }
+          bind "Super 6" { GoToTab 6; }
+          bind "Super 7" { GoToTab 7; }
+          bind "Super 8" { GoToTab 8; }
+          bind "Super 9" { GoToTab 9; }
+        }
+      }
+    '';
   };
 
   programs.wezterm = {
@@ -116,7 +151,7 @@
   };
 
   programs.kitty = {
-    enable = true;
+    enable = false;
     enableGitIntegration = false;
     shellIntegration.mode = "no-cursor";
     darwinLaunchOptions = [
@@ -169,16 +204,26 @@
     enable = true;
     theme = "monokai_pro";
     settings = {
+      terminal = {
+        shell = {
+          program = "${pkgs.fish}/bin/fish";
+          args = [
+            "--login"
+            "--init-command"
+            "zellij attach --create"
+          ];
+        };
+      };
       font = {
         normal = {
-          family = "CommitMono";
+          family = "CommitMono-Custom";
           style = "Regular";
         };
         bold = {
-          family = "CommitMono";
+          family = "CommitMono-Custom";
         };
         italic = {
-          family = "CommitMono";
+          family = "CommitMono-Custom";
         };
         size = 12.0;
         builtin_box_drawing = true;
@@ -192,31 +237,65 @@
         unfocused_hollow = false;
       };
 
-     # colors = {
-     #   primary = {
-     #     background = "#272822";
-     #     foreground = "#f8f8f2";
-     #   };
-     #   normal = {
-     #     black = "#272822";
-     #     red = "#f92672";
-     #     green = "#a6e22e";
-     #     yellow = "#f4bf75";
-     #     blue = "#66d9ef";
-     #     magenta = "#ae81ff";
-     #     cyan = "#a1efe4";
-     #     white = "#f8f8f2";
-     #   };
-     #   bright = {
-     #     black = "#75715e";
-     #     red = "#f92672";
-     #     green = "#a6e22e";
-     #     yellow = "#f4bf75";
-     #     blue = "#66d9ef";
-     #     magenta = "#ae81ff";
-     #     cyan = "#a1efe4";
-     #     white = "#f9f8f5";
-     #   };
+      # Nord
+     #  colors = {
+     #    primary = {
+     #      background = "#2e3440";
+     #      foreground = "#d8dee9";
+     #      dim_foreground = "#a5abb6";
+     #    };
+     #    cursor = {
+     #      text = "#2e3440";
+     #      cursor = "#d8dee9";
+     #    };
+     #    vi_mode_cursor = {
+     #      text = "#2e3440";
+     #      cursor = "#d8dee9";
+     #    };
+     #    selection = {
+     #      text = "CellForeground";
+     #      background = "#4c566a";
+     #    };
+     #    search = {
+     #      matches = {
+     #        foreground = "CellBackground";
+     #        background = "#88c0d0";
+     #      };
+     #     # bar = {
+     #     #   background = "#434c5e";
+     #     #   foreground = "#d8dee9";
+     #     # };
+     #    };
+     #    normal = {
+     #      black = "#3b4252";
+     #      red = "#bf616a";
+     #      green = "#a3be8c";
+     #      yellow = "#ebcb8b";
+     #      blue = "#81a1c1";
+     #      magenta = "#b48ead";
+     #      cyan = "#88c0d0";
+     #      white = "#e5e9f0";
+     #    };
+     #    bright = {
+     #      black = "#4c566a";
+     #      red = "#bf616a";
+     #      green = "#a3be8c";
+     #      yellow = "#ebcb8b";
+     #      blue = "#81a1c1";
+     #      magenta = "#b48ead";
+     #      cyan = "#8fbcbb";
+     #      white = "#eceff4";
+     #    };
+     #    dim = {
+     #      black = "#373e4d";
+     #      red = "#94545d";
+     #      green = "#809575";
+     #      yellow = "#b29e75";
+     #      blue = "#68809a";
+     #      magenta = "#8c738c";
+     #      cyan = "#6d96a5";
+     #      white = "#aeb3bb";
+     #    };
      # };
 
       selection = {

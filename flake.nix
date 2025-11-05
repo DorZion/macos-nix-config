@@ -42,6 +42,9 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -55,6 +58,7 @@
     darwin,
     home-manager,
     nix-index-database,
+    mac-app-util,
     ...
   } @ inputs: let
     overlays = {}; # import ./overlays { inherit inputs; };
@@ -62,24 +66,30 @@
     darwinConfigurations.MBP = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
-        ./modules/core.nix
-        ./modules/system.nix
-        ./modules/brew.nix
-        ./modules/users.nix
-        overlays
+        mac-app-util.darwinModules.default
 
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+       ./modules/core.nix
+       ./modules/system.nix
+       ./modules/brew.nix
+       ./modules/users.nix
+       overlays
 
-            backupFileExtension = "bak";
+       home-manager.darwinModules.home-manager
+       {
+         home-manager = {
+           sharedModules = [
+             mac-app-util.homeManagerModules.default
+           ];
 
-            extraSpecialArgs = {inherit inputs;};
+           useGlobalPkgs = true;
+           useUserPackages = true;
 
-            users.dor = import ./home;
-          };
+           backupFileExtension = "bak";
+
+           extraSpecialArgs = {inherit inputs;};
+
+           users.dor = import ./home;
+         };
         }
       ];
     };

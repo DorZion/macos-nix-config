@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "search": {
-    "include_ignored": true
+    "include_ignored": false
   },
   "edit_predictions": {
     "mode": "subtle"
@@ -90,10 +90,13 @@
   },
   "autosave": "on_window_change",
   "inlay_hints": {
-    "enabled": true,
+    "enabled": false,
     "show_type_hints": false,
     "show_background": false,
-    "show_parameter_hints": false
+    "show_parameter_hints": true,
+    "toggle_on_modifiers_press": {
+      "function": true
+    }
   },
   "tab_size": 2,
   "languages": {
