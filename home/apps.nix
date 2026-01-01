@@ -32,6 +32,8 @@
     fq
     gitu
     golangci-lint
+    go-task
+    harper
   ];
 
   programs.direnv.enable = true;
@@ -48,7 +50,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Nord";
+      theme = "Monokai Extended";
     };
   };
 
@@ -64,19 +66,14 @@
     attachExistingSession = false;
     exitShellOnExit = false;
 
-    settings.theme = "molokai-dark";
+    settings.theme = "ayu_dark";
 
     extraConfig = ''
-      show_stratup_tips false
+      show_startup_tips false
       show_release_notes false
 
-      layout {
-        pane
-        pane split_direction="vertical" {
-            pane command="claude"
-            pane
-        }
-      }
+      advanced_mouse_actions false
+
       keybinds {
         normal {
           unbind "Alt Left"
@@ -200,13 +197,14 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "monokai_pro";
+    theme = "ayu_dark";
     settings = {
       terminal = {
         shell = {
           program = "${pkgs.fish}/bin/fish";
           args = [
             "--login"
+            "--interactive"
             "--init-command"
             "zellij attach --create"
           ];
@@ -226,6 +224,8 @@
         size = 12.0;
         builtin_box_drawing = true;
       };
+
+      mouse.hide_when_typing = true;
 
       cursor = {
         style = {

@@ -31,20 +31,36 @@
         name = "bass";
         src = pkgs.fishPlugins.bass.src;
       }
+      {
+        name = "foreign-env";
+        src = pkgs.fishPlugins.foreign-env.src;
+      }
+      {
+        name = "async-prompt";
+        src = pkgs.fishPlugins.async-prompt.src;
+      }
+      # {
+      #   name = "hydro";
+      #   src = pkgs.fishPlugins.hydro.src;
+      # }
       # {
       #   name = "tide";
       #   src = pkgs.fishPlugins.tide.src;
       # }
-      # {
-      #   name = "pure";
-      #   src = pkgs.fishPlugins.pure.src;
-      # }
+      {
+        name = "pure";
+        src = pkgs.fishPlugins.pure.src;
+      }
     ];
     shellInit = ''
       set fish_greeting
       set fish_cursor_default block
 
-      fish_config prompt choose "informative_vcs"
+      # fish_vi_key_bindings
+
+      # fish_config prompt choose "informative_vcs"
+
+      # fish_config prompt choose "scales"
 
       #theme_gruvbox dark hard
 
@@ -62,33 +78,41 @@
           set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
 
-      #fish_config theme choose "ayu Dark"
+      fish_config theme choose "ayu Dark"
+
+      # Pure
+      set -g async_prompt_functions _pure_prompt_git
+      set --universal pure_check_for_new_release false
+      set --universal pure_shorten_prompt_current_directory_length 1
+      set --universal pure_begin_prompt_with_current_directory false
+      set --universal pure_enable_single_line_prompt true
+      set --universal pure_show_subsecond_command_duration true
 
       #fish_config theme choose "fish default"
       
       #fish_config theme choose "nord"
 
-       set -g fish_color_autosuggestion '555'  'brblack'
-       set -g fish_color_cancel -r
-       set -g fish_color_command --bold
-       set -g fish_color_comment red
-       set -g fish_color_cwd green
-       set -g fish_color_cwd_root red
-       set -g fish_color_end brmagenta
-       set -g fish_color_error brred
-       set -g fish_color_escape 'bryellow'  '--bold'
-       set -g fish_color_history_current --bold
-       set -g fish_color_host normal
-       set -g fish_color_match --background=brblue
-       set -g fish_color_normal normal
-       set -g fish_color_operator bryellow
-       set -g fish_color_param cyan
-       set -g fish_color_quote yellow
-       set -g fish_color_redirection brblue
-       set -g fish_color_search_match 'bryellow'  '--background=brblack'
-       set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
-       set -g fish_color_user brgreen
-       set -g fish_color_valid_path --underline
+      # set -g fish_color_autosuggestion '555'  'brblack'
+      # set -g fish_color_cancel -r
+      # set -g fish_color_command --bold
+      # set -g fish_color_comment red
+      # set -g fish_color_cwd green
+      # set -g fish_color_cwd_root red
+      # set -g fish_color_end brmagenta
+      # set -g fish_color_error brred
+      # set -g fish_color_escape 'bryellow'  '--bold'
+      # set -g fish_color_history_current --bold
+      # set -g fish_color_host normal
+      # set -g fish_color_match --background=brblue
+      # set -g fish_color_normal normal
+      # set -g fish_color_operator bryellow
+      # set -g fish_color_param cyan
+      # set -g fish_color_quote yellow
+      # set -g fish_color_redirection brblue
+      # set -g fish_color_search_match 'bryellow'  '--background=brblack'
+      # set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
+      # set -g fish_color_user brgreen
+      # set -g fish_color_valid_path --underline
     '';
     shellAliases = {
       vim = "nvim";
@@ -103,6 +127,8 @@
       package.disabled = true;
       docker_context.disabled = true;
 
+      format = "$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$python$character";
+
       time = {
         disabled = true;
       };
@@ -111,48 +137,38 @@
       #palette = "catppuccin_mocha";
 
       git_branch = {
-        style = "bold mauve";
+        format = "[$branch]($style)";
+        style = "mauve";
       };
 
       directory = {
         #truncation_length = 4;
         #style = "bold lavender";
         fish_style_pwd_dir_length = 1;
+        style = "blue";
       };
 
+      battery = {
+        full_symbol = "• ";
+        charging_symbol = "⇡ ";
+        discharging_symbol = "⇣ ";
+        unknown_symbol = "❓ ";
+        empty_symbol = "❗ ";
+      };
+
+      nodejs = {
+        symbol = "[⬢](bold green) ";
+      };
+
+      #character = {
+      #  success_symbol = "[❯](green)";
+      #  error_symbol = "[❯](red)";
+      #  vimcmd_symbol = "[❮](subtext1)";
+      #};
       character = {
-        success_symbol = "[❯](green)";
-        error_symbol = "[❯](red)";
-        vimcmd_symbol = "[❮](subtext1)";
-      };
-
-      palettes.catppuccin_mocha = {
-        rosewater = "#f5e0dc";
-        flamingo = "#f2cdcd";
-        pink = "#f5c2e7";
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        maroon = "#eba0ac";
-        peach = "#fab387";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        teal = "#94e2d5";
-        sky = "#89dceb";
-        sapphire = "#74c7ec";
-        blue = "#89b4fa";
-        lavender = "#b4befe";
-        text = "#cdd6f4";
-        subtext1 = "#bac2de";
-        subtext0 = "#a6adc8";
-        overlay2 = "#9399b2";
-        overlay1 = "#7f849c";
-        overlay0 = "#6c7086";
-        surface2 = "#585b70";
-        surface1 = "#45475a";
-        surface0 = "#313244";
-        base = "#1e1e2e";
-        mantle = "#181825";
-        crust = "#11111b";
+        success_symbol = "[$exit\\$](green)";
+        error_symbol = "[$exit\\$](red)";
+        vimcmd_symbol = "[$exit\\❮](subtext1)";
       };
     };
   };
