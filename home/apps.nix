@@ -38,7 +38,7 @@
 
   programs.direnv.enable = true;
 
-  programs.mise.enable = true;
+  programs.mise.enable = false;
 
   programs.zoxide.enable = true;
 
