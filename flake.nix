@@ -45,6 +45,10 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
     };
+    #opencode = {
+    #  url = "github:anomalyco/opencode/dev";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -61,7 +65,13 @@
     mac-app-util,
     ...
   } @ inputs: let
-    overlays = {}; # import ./overlays { inherit inputs; };
+    overlays = {
+#      nixpkgs.overlays = [
+#        (final: prev: {
+#          opencode = inputs.opencode.packages.${final.system}.default;
+#        })
+#      ];
+    };
   in {
     darwinConfigurations.MBP = darwin.lib.darwinSystem {
       system = "aarch64-darwin";

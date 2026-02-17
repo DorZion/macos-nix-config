@@ -12,6 +12,8 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    colorscheme = "gruvbox";
+
     opts = {
       compatible = false;
 
@@ -63,10 +65,24 @@
           nix = ["nix"];
         };
       };
+      plenary.enable = true;
+      octo.enable = true;
+      fugitive.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-nix
+      plenary-nvim
+      oceanic-next
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "gruvbox";
+        src = pkgs.fetchFromGitHub {
+            owner = "ellisonleao";
+            repo = "gruvbox.nvim";
+            rev = "a472496e1a4465a2dd574389dcf6cdb29af9bf1b";
+            hash = "sha256-dotM6G4JG1dC9/JwHDR+lg4bMv7zPVI9MgEqCgCGECQ=";
+        };
+      })
     ];
 
     colorschemes.catppuccin = {
@@ -83,9 +99,12 @@
       enable = false;
     };
     colorschemes.monokai-pro = {
-      enable = true;
+      enable = false;
     };
     colorschemes.nord = {
+      enable = false;
+    };
+    colorschemes.github-theme = {
       enable = false;
     };
   };

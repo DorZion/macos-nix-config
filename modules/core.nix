@@ -8,7 +8,7 @@
   nix.enable = true;
 
   # Auto upgrade nix package and the daemon service.
-  nix.package = pkgs.lixPackageSets.stable.lix;
+  nix.package = pkgs.lixPackageSets.latest.lix;
   programs.nix-index.enable = false;
 
   # do garbage collection weekly to keep disk usage low

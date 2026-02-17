@@ -60,7 +60,6 @@
 
       # fish_config prompt choose "scales"
 
-      #theme_gruvbox dark hard
 
       fish_add_path /opt/homebrew/bin
       fish_add_path ~/.local/bin
@@ -78,7 +77,6 @@
 
       $HOME/.local/bin/mise activate fish | source
 
-      fish_config theme choose "ayu Dark"
 
       # Pure
       set -g async_prompt_functions _pure_prompt_git
@@ -91,6 +89,10 @@
       #fish_config theme choose "fish default"
       
       #fish_config theme choose "nord"
+
+      #fish_config theme choose "ayu Dark"
+
+      theme_gruvbox dark
 
       # set -g fish_color_autosuggestion '555'  'brblack'
       # set -g fish_color_cancel -r

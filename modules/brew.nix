@@ -1,7 +1,7 @@
 {...}: {
   homebrew = {
     enable = true;
-    brewPrefix = "/opt/homebrew/bin";
+    prefix = "/opt/homebrew";
     global = {
       brewfile = true;
     };

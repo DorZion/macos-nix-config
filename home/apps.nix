@@ -30,10 +30,10 @@
     yt-dlp
     clang-tools
     fq
-    gitu
     golangci-lint
     go-task
     harper
+    opencode
   ];
 
   programs.direnv.enable = true;
@@ -66,7 +66,7 @@
     attachExistingSession = false;
     exitShellOnExit = false;
 
-    settings.theme = "ayu_dark";
+    settings.theme = "gruvbox-dark";
 
     extraConfig = ''
       show_startup_tips false
@@ -85,15 +85,15 @@
           bind "Super Right" { MoveFocusOrTab "right"; }
           bind "Super Up" { MoveFocus "up"; }
           bind "Super Down" { MoveFocus "down"; }
-          bind "Super 1" { GoToTab 1; }
-          bind "Super 2" { GoToTab 2; }
-          bind "Super 3" { GoToTab 3; }
-          bind "Super 4" { GoToTab 4; }
-          bind "Super 5" { GoToTab 5; }
-          bind "Super 6" { GoToTab 6; }
-          bind "Super 7" { GoToTab 7; }
-          bind "Super 8" { GoToTab 8; }
-          bind "Super 9" { GoToTab 9; }
+          bind "Alt 1" { GoToTab 1; }
+          bind "Alt 2" { GoToTab 2; }
+          bind "Alt 3" { GoToTab 3; }
+          bind "Alt 4" { GoToTab 4; }
+          bind "Alt 5" { GoToTab 5; }
+          bind "Alt 6" { GoToTab 6; }
+          bind "Alt 7" { GoToTab 7; }
+          bind "Alt 8" { GoToTab 8; }
+          bind "Alt 9" { GoToTab 9; }
         }
       }
     '';
@@ -197,7 +197,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "ayu_dark";
+    theme = "gruvbox_dark";
     settings = {
       terminal = {
         shell = {
@@ -212,14 +212,14 @@
       };
       font = {
         normal = {
-          family = "CommitMono-Custom";
+          family = "CommitMono Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "CommitMono-Custom";
+          family = "CommitMono Nerd Font";
         };
         italic = {
-          family = "CommitMono-Custom";
+          family = "CommitMono Nerd Font";
         };
         size = 12.0;
         builtin_box_drawing = true;
@@ -315,6 +315,53 @@
         dynamic_padding = false;
         opacity = 1.0;
       };
+      keyboard.bindings = [
+        {
+          key = "Key1";
+          mods = "Command";
+          chars = "\\u001B1";
+        }
+        {
+          key = "Key2";
+          mods = "Command";
+          chars = "\\u001B2";
+        }
+        {
+          key = "Key3";
+          mods = "Command";
+          chars = "\\u001B3";
+        }
+        {
+          key = "Key4";
+          mods = "Command";
+          chars = "\\u001B4";
+        }
+        {
+          key = "Key5";
+          mods = "Command";
+          chars = "\\u001B5";
+        }
+        {
+          key = "Key6";
+          mods = "Command";
+          chars = "\\u001B6";
+        }
+        {
+          key = "Key7";
+          mods = "Command";
+          chars = "\\u001B7";
+        }
+        {
+          key = "Key8";
+          mods = "Command";
+          chars = "\\u001B8";
+        }
+        {
+          key = "Key9";
+          mods = "Command";
+          chars = "\\u001B9";
+        }
+      ];
     };
   };
 

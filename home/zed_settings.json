@@ -7,6 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark",
+  },
+  "agent_servers": {
+    "claude": {
+      "default_mode": "plan",
+    },
+    "github-copilot": {
+      "type": "registry",
+    },
+  },
+  "soft_wrap": "none",
+  "text_rendering_mode": "platform_default",
+  "ui_font_size": 14.0,
   "git": {
     "git_gutter": "tracked_files",
     "inline_blame": {
@@ -19,6 +35,7 @@
     "include_ignored": false,
   },
   "edit_predictions": {
+    "provider": "copilot",
     "mode": "subtle",
   },
   "confirm_quit": true,
@@ -45,11 +62,8 @@
     "model_parameters": [],
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-latest",
+      "model": "claude-opus-4-5-thinking-latest",
     },
-  },
-  "features": {
-    "edit_prediction_provider": "copilot",
   },
   "vim_mode": true,
   "vim": {
@@ -62,7 +76,6 @@
     "diagnostics": false,
   },
   "ui_font_family": "CommitMono",
-  "ui_font_size": 14.0,
   "ui_font_features": {
     "ss03": true,
     "ss04": true,
@@ -74,8 +87,8 @@
     "cv10": true,
   },
   "buffer_font_family": "CommitMono",
-  "buffer_font_size": 13.0,
-  "buffer_line_height": "comfortable",
+  "buffer_font_size": 12.0,
+  "buffer_line_height": "standard",
   "buffer_font_features": {
     "ss03": true,
     "ss04": true,
@@ -87,11 +100,6 @@
     "cv10": false,
   },
   "cursor_blink": false,
-  "theme": {
-    "mode": "system",
-    "light": "Zedokai Light",
-    "dark": "Zedokai",
-  },
   "icon_theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
@@ -142,14 +150,6 @@
       ],
     },
   },
-  "lsp": {
-    "ty": {
-      "binary": {
-        "path": "/Users/dor/.local/bin/ty",
-        "arguments": ["server"],
-      },
-    },
-  },
   "file_scan_inclusions": [
     ".env*",
     "docker-compose.*.yml",
@@ -173,4 +173,11 @@
   "minimap": {
     "show": "auto",
   },
+  // "experimental.theme_overrides": {
+  //   "players": [
+  //     {
+  //       "cursor": "#ffff",
+  //     },
+  //   ],
+  // },
 }
