@@ -42,9 +42,40 @@
       cmdheight = 0;
     };
 
+    globals = {
+      mapleader = "<Space>";
+      maplocalleader = "\\";
+    };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "<localleader>cv";
+        action = "<cmd>Octo review thread<CR>";
+        options = { 
+          desc = "View thread on line";
+        };
+      }
+      {
+        mode = "n";
+        key = "<localleader>cV";
+        action = "<cmd>Octo review comments<CR>";
+        options = { 
+          desc = "View all comments in the active review";
+        };
+      }
+    ];
+
     plugins = {
       treesitter.enable = true;
-      lsp.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          gopls.enable = true;
+          graphql.enable = true;
+          ts_ls.enable = true;
+        };
+      };
       telescope.enable = true;
       which-key.enable = true;
       web-devicons.enable = true;
@@ -66,8 +97,50 @@
         };
       };
       plenary.enable = true;
-      octo.enable = true;
       fugitive.enable = true;
+      blink-emoji.enable = true;
+      blink-cmp-git.enable = true;
+      bufferline.enable = true;
+
+      octo = {
+        enable = true;
+        settings = {
+          reviews = {
+            auto_show_threads = false;
+          };
+        };
+      };
+
+      blink-cmp = {
+        enable = true;
+        settings.sources.providers = {
+          emoji = {
+            module = "blink-emoji";
+            name = "Emoji";
+            score_offset = 15;
+            opts = {
+              insert = true;
+            };
+          };
+          git = {
+            module = "blink-cmp-git";
+            name = "git";
+            score_offset = 100;
+            opts = {
+              commit = { };
+              git_centers = { git_hub = { }; };
+            };
+          };
+        };
+      };
+      settings.sources.default = [
+        "lsp"
+        "path" 
+        "snippets"
+        "buffer"
+        "emoji"
+        "git"
+      ];
     };
 
     extraPlugins = with pkgs.vimPlugins; [
