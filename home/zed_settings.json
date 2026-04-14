@@ -13,7 +13,8 @@
     "dark": "Gruvbox Dark",
   },
   "agent_servers": {
-    "claude": {
+    "claude-acp": {
+      "type": "registry",
       "default_mode": "plan",
     },
     "github-copilot": {

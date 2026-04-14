@@ -24,7 +24,6 @@
     nss.tools
     mergiraf
     presenterm
-    lunarvim
     git-who
     jujutsu
     yt-dlp
