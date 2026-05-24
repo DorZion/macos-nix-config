@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left",
   },
@@ -25,12 +26,17 @@
     "dark": "Gruvbox Dark",
   },
   "agent_servers": {
-    "codex-acp": {
-      "type": "registry",
+    "pi": {
+      "type": "custom",
+      "command": "npx",
+      "args": ["-y", "pi-acp"],
+      "env": {},
     },
     "claude-acp": {
       "type": "registry",
-      "default_mode": "plan",
+    },
+    "pi-acp": {
+      "type": "registry",
     },
     "github-copilot": {
       "type": "registry",
@@ -57,13 +63,7 @@
   "confirm_quit": true,
   "base_keymap": "VSCode",
   "disable_ai": false,
-  "context_servers": {
-    "atlassian": {
-      "enabled": false,
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.atlassian.com/v1/sse"],
-    },
-  },
+  "context_servers": {},
   "debugger": {
     "dock": "bottom",
   },
@@ -135,7 +135,28 @@
     },
   },
   "tab_size": 2,
+  "lsp": {
+    "golangci-lint": {
+      "binary": {
+        "path": "/Users/dor/.local/bin/golangci-lint-langserver",
+      },
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--allow-parallel-runners",
+          "--output.text.path=",
+        ],
+      },
+    },
+  },
   "languages": {
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint"],
+    },
     "Proto": {
       "formatter": [
         {
@@ -182,6 +203,7 @@
   "diagnostics": {
     "inline": {
       "enabled": true,
+      "max_severity": "all",
     },
   },
   "centered_layout": {

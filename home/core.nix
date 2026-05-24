@@ -12,6 +12,8 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    nixpkgs.source = pkgs.path;
+
     colorscheme = "gruvbox";
 
     opts = {
@@ -106,7 +108,7 @@
         enable = true;
         settings = {
           reviews = {
-            auto_show_threads = false;
+            auto_show_threads = true;
           };
         };
       };
