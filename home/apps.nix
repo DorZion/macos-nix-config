@@ -110,15 +110,14 @@
 
       return {
         font = wezterm.font_with_fallback {
-          "CommitMono",
+          "IosevkaTerm Nerd Font Mono",
           "Monaspace Krypton",
           "Monaspace Neon",
           "Rec Mono Linear",
           "Sudo",
         },
         font_size = 12,
-        --harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-        harfbuzz_features = { 'ss03 on', 'ss04 on', 'ss05 on', 'cv02 on', 'cv08 on' },
+        harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
         audible_bell = "Disabled",
         automatically_reload_config = true,
         window_decorations = "RESIZE",
@@ -152,12 +151,13 @@
       "--listen-on=unix:/tmp/kitty-socket"
     ];
     font = {
-      name = "CommitMono";
+      name = "IosevkaTerm Nerd Font Mono";
     };
     themeFile = "Monokai";
 
     settings = {
       font_size = 12.0;
+      disable_ligatures = "always";
       cursor = "none";
       cursor_shape = "block";
       cursor_blink_interval = 0;
@@ -189,8 +189,6 @@
       map cmd+8 goto_tab 8
       map cmd+9 goto_tab 9
       map cmd+0 goto_tab 10
-
-      font_features CommitMono-Regular +ss03 +ss04 +ss05 +cv02 +cv04 +cv08
     '';
   };
 
@@ -211,16 +209,16 @@
       };
       font = {
         normal = {
-          family = "CommitMono Nerd Font";
+          family = "IosevkaTerm Nerd Font Mono";
           style = "Regular";
         };
         bold = {
-          family = "CommitMono Nerd Font";
+          family = "IosevkaTerm Nerd Font Mono";
         };
         italic = {
-          family = "CommitMono Nerd Font";
+          family = "IosevkaTerm Nerd Font Mono";
         };
-        size = 12.0;
+        size = 13.0;
         builtin_box_drawing = true;
       };
 
@@ -329,12 +327,10 @@
   home.file.".config/ghostty/config".text = ''
     theme = "GruvboxDarkHard"
 
-    font-family = "CommitMono"
-    font-feature = "ss03"
-    font-feature = "ss04"
-    font-feature = "ss05"
-    font-feature = "cv02"
-    font-feature = "cv08"
+    font-family = "IosevkaTerm Nerd Font Mono"
+    font-feature = "-calt"
+    font-feature = "-clig"
+    font-feature = "-liga"
 
     cursor-style-blink = false
     cursor-invert-fg-bg = true
