@@ -314,53 +314,15 @@
         dynamic_padding = false;
         opacity = 1.0;
       };
-      keyboard.bindings = [
-        {
-          key = "Key1";
-          mods = "Command";
-          chars = "\\u001B1";
-        }
-        {
-          key = "Key2";
-          mods = "Command";
-          chars = "\\u001B2";
-        }
-        {
-          key = "Key3";
-          mods = "Command";
-          chars = "\\u001B3";
-        }
-        {
-          key = "Key4";
-          mods = "Command";
-          chars = "\\u001B4";
-        }
-        {
-          key = "Key5";
-          mods = "Command";
-          chars = "\\u001B5";
-        }
-        {
-          key = "Key6";
-          mods = "Command";
-          chars = "\\u001B6";
-        }
-        {
-          key = "Key7";
-          mods = "Command";
-          chars = "\\u001B7";
-        }
-        {
-          key = "Key8";
-          mods = "Command";
-          chars = "\\u001B8";
-        }
-        {
-          key = "Key9";
-          mods = "Command";
-          chars = "\\u001B9";
-        }
-      ];
+      # Cmd+<n> -> emit the ESC <n> byte sequence (i.e. Alt+<n>) so Zellij's
+      # `bind "Alt <n>"` catches it. macOS terminals don't forward Cmd to TUIs.
+      # builtins.fromJSON is used because Nix strings have no \u escape, and a
+      # literal "\\u001B" would be sent verbatim instead of as a real ESC byte.
+      keyboard.bindings = map (n: {
+        key = "Key${toString n}";
+        mods = "Command";
+        chars = builtins.fromJSON ''"\u001B${toString n}"'';
+      }) [ 1 2 3 4 5 6 7 8 9 ];
     };
   };
 

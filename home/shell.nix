@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.shell.enableFishIntegration = true;
 
   home.sessionVariables = {
@@ -6,7 +10,8 @@
   };
 
   catppuccin = {
-    enable = false;
+    enable = true;
+    autoEnable = false;
     flavor = "mocha";
   };
 
@@ -63,6 +68,10 @@
 
       fish_add_path /opt/homebrew/bin
       fish_add_path ~/.local/bin
+      # ponytail: macOS session $USER resolves to the corporate SSO identity (dor@noma.security),
+      # not the local short name, so nix-darwin's $USER-based per-user PATH entry is wrong.
+      # Use the build-time home.username instead of the runtime (broken) $USER.
+      fish_add_path --prepend /etc/profiles/per-user/${config.home.username}/bin
 
       #source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
       #${pkgs.direnv}/bin/direnv hook fish | source
@@ -92,8 +101,6 @@
 
       #fish_config theme choose "ayu Dark"
 
-      theme_gruvbox dark
-
       # set -g fish_color_autosuggestion '555'  'brblack'
       # set -g fish_color_cancel -r
       # set -g fish_color_command --bold
@@ -115,6 +122,9 @@
       # set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
       # set -g fish_color_user brgreen
       # set -g fish_color_valid_path --underline
+    '';
+    interactiveShellInit = ''
+      theme_gruvbox dark
     '';
     shellAliases = {
       vim = "nvim";

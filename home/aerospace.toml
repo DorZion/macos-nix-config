@@ -1,6 +1,13 @@
 # Reference: https://github.com/i3/i3/blob/next/etc/config
+config-version = 2
 
 start-at-login = true
+
+# Automatically reload the config when the config file is saved
+# After setting this to true, reload once manually to start the auto-reloading
+auto-reload-config = true
+
+focus-follows-mouse.enabled = false
 
 after-startup-command = [
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'

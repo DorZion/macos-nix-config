@@ -45,7 +45,7 @@
     };
 
     globals = {
-      mapleader = "<Space>";
+      mapleader = " ";
       maplocalleader = "\\";
     };
 
@@ -62,7 +62,7 @@
         mode = "n";
         key = "<localleader>cV";
         action = "<cmd>Octo review comments<CR>";
-        options = { 
+        options = {
           desc = "View all comments in the active review";
         };
       }
@@ -98,10 +98,7 @@
           nix = ["nix"];
         };
       };
-      plenary.enable = true;
       fugitive.enable = true;
-      blink-emoji.enable = true;
-      blink-cmp-git.enable = true;
       bufferline.enable = true;
 
       octo = {
@@ -113,42 +110,84 @@
         };
       };
 
+      snacks = {
+        enable = true;
+        settings = {
+          picker = { enabled = true; };
+        };
+      };
+
+      blink-cmp-git.enable = true;
+      blink-cmp-dictionary.enable = true;
+      blink-emoji.enable = true;
+
       blink-cmp = {
         enable = true;
-        settings.sources.providers = {
-          emoji = {
-            module = "blink-emoji";
-            name = "Emoji";
-            score_offset = 15;
-            opts = {
-              insert = true;
+        setupLspCapabilities = true;
+        settings.sources.default = [
+          "lsp"
+          "path"
+          "snippets"
+          "buffer"
+          "emoji"
+          "git"
+          "dictionary"
+          "thesaurus"
+        ];
+        settings.sources = {
+          providers = {
+            thesaurus = {
+              name = "blink-cmp-words";
+              module = "blink-cmp-words.thesaurus";
+              opts = {
+                score_offset = 0;
+                definition_pointers = [ "!" "&" "^" ];
+                similarity_pointers = [ "&" "^" ];
+                similarity_depth = 2;
+              };
+            };
+            dictionary = {
+              name = "blink-cmp-words";
+              module = "blink-cmp-words.dictionary";
+              opts = {
+                dictionary_search_threshold = 3;
+                score_offset = 0;
+                definition_pointers = [ "!" "&" "^" ];
+              };
+            };
+            emoji = {
+              module = "blink-emoji";
+              name = "Emoji";
+              score_offset = 15;
+              opts = {
+                insert = true;
+              };
+            };
+            git = {
+              module = "blink-cmp-git";
+              name = "git";
+              score_offset = 100;
+              opts = {
+                commit = { };
+                git_centers = { git_hub = { }; };
+              };
             };
           };
-          git = {
-            module = "blink-cmp-git";
-            name = "git";
-            score_offset = 100;
-            opts = {
-              commit = { };
-              git_centers = { git_hub = { }; };
-            };
+          per_filetype = {
+            text = [ "dictionary" ];
+            markdown = [ "thesaurus" ];
           };
         };
       };
-      settings.sources.default = [
-        "lsp"
-        "path" 
-        "snippets"
-        "buffer"
-        "emoji"
-        "git"
-      ];
     };
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-nix
       plenary-nvim
       oceanic-next
+      gh-nvim
+      litee-nvim
+      blink-cmp-words # provides the dictionary/thesaurus provider modules referenced above
       (pkgs.vimUtils.buildVimPlugin {
         name = "gruvbox";
         src = pkgs.fetchFromGitHub {

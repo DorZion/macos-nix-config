@@ -67,11 +67,20 @@
     ...
   } @ inputs: let
     overlays = {
-#      nixpkgs.overlays = [
+      nixpkgs.overlays = [
+        # Temporary workaround for nixpkgs applying this patch after its
+        # changes were already included in the nixos-render-docs source.
+        (final: prev: {
+          nixos-render-docs = prev.nixos-render-docs.overrideAttrs (old: {
+            patches = builtins.filter
+              (patch: builtins.baseNameOf (toString patch) != "extend-admonition-support.patch")
+              (old.patches or []);
+          });
+        })
 #        (final: prev: {
 #          opencode = inputs.opencode.packages.${final.system}.default;
 #        })
-#      ];
+      ];
     };
   in {
     darwinConfigurations.MBP = darwin.lib.darwinSystem {
